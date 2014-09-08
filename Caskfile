@@ -4,7 +4,6 @@
 install phinze/cask/brew-cask
 tap caskroom/versions
 
-cask install dropbox 2> /dev/null
 cask install google-chrome 2> /dev/null
 cask install google-chrome-canary 2> /dev/null
 cask install imagealpha 2> /dev/null
@@ -24,5 +23,5 @@ cask install virtualbox 2> /dev/null
 cask install vlc 2> /dev/null
 
 # QuickLook plugins
-cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
+cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
 cask install quicklook-csv betterzipql webp-quicklook

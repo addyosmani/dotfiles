@@ -1,4 +1,0 @@
-{ 
-    "cmd": ["pandoc", "-S", "-s", "-f", "markdown", "-t", "html", "-o", "$file_base_name.html", "$file"],
-    "selector": "text.html.markdown"
-}

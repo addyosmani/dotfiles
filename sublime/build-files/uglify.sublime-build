@@ -1,4 +1,0 @@
-{
-   "cmd": [ "node", "uglifyjs", "-o", "${file_path}/${file_base_name}.min.js", "$file"],
-   "selector": "source.js"
-}

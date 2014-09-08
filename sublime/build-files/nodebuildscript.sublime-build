@@ -1,4 +1,0 @@
-{
-    "cmd": ["h5bp", "--no-color"],
-    "selector": ["source.js", "source.less", "source.json"]
-}

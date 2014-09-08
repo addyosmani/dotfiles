@@ -7,7 +7,6 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
@@ -16,7 +15,7 @@ alias h="history"
 alias j="jobs"
 
 # programs
-alias st='open -a "Sublime Text"'
+alias at='open -a "Atom"'
 # also/or do this:
 # ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 alias preview="open -a '$PREVIEW'"
@@ -36,7 +35,7 @@ alias gpr="~/code/gpr $1"
 
 # general shortcuts
 alias pro="cd ~/projects"
-alias gh="open -a google\ chrome 'http://github.com/addyosmani'"
+alias gh="open -a google\ chrome 'http://github.com/gauntface'"
 alias bl="open -a google\ chrome 'http://browserling.com'"
 
 # be nice
@@ -45,6 +44,7 @@ alias please=sudo
 # handy things
 alias bunyip='node ~/code/bunyip/cli.js'
 alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
+alias music="open -a google\ chrome 'http://music.google.com/'"
 
 
 # Detect which `ls` flavor is in use
@@ -143,9 +143,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Run DropboxUploader if you have it installed
-alias dropbox="~/code/Dropbox-Uploader/dropbox_uploader.sh $1"
 
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`

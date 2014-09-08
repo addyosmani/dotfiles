@@ -22,8 +22,8 @@ shopt -s histappend
 shopt -s cdspell
 
 # Prefer US English and use UTF-8
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US"
+export LC_ALL="en_GB.UTF-8"
+export LANG="en_GB"
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
