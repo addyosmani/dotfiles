@@ -1,0 +1,37 @@
+# Ubuntu specific alias
+open() { nautilus $1 >/dev/null 2>/dev/null & disown}
+
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+
+# Shortcuts
+alias dl="cd ~/Downloads"
+alias p="cd ~/Projects"
+alias s="cd ~/Projects/Sites"
+alias c="cd ~/Projects/Code"
+alias d="cd ~/Projects/Designs"
+alias t="cd ~/Projects/Tools"
+
+# programs
+alias at="atom"
+alias chrome="google-chrome"
+alias music="google-chrome 'http://music.google.com/'"
+alias facebook="google-chrome 'http://facebook.com/'"
+alias twitter="google-chrome 'http://twitter.com/'"
+alias gauntface="google-chrome 'https://gauntface.com/blog'"
+
+# Start local server
+alias server="python -m SimpleHTTPServer"
+
+# be nice
+alias please=sudo
+
+# List all files colorized in long format
+alias l="ls -l ${colorflag}"
+
+alias addJSCS="cp ~/Projects/Tools/Configs/jscsrc ./.jscsrc"
+alias addJSHint="cp ~/Projects/Tools/Configs/jshintrc ./.jshintrc"
