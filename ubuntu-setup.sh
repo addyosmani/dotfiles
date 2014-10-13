@@ -17,7 +17,7 @@ chsh -s $(which zsh)
 
 cp ohmyzsh/zshrc ~/.zshrc
 
-cp aliases ~/.aliases
+cat aliases ubuntu-aliases > ~/.aliases
 
 # Make common project directory structure
 mkdir -p ~/Projects

@@ -1,0 +1,11 @@
+
+# Make Nautilus open with same command as OS X
+open() { nautilus $1 >/dev/null 2>/dev/null & disown}
+
+# programs
+alias at="atom"
+alias chrome="google-chrome"
+alias music="google-chrome 'http://music.google.com/'"
+alias facebook="google-chrome 'http://facebook.com/'"
+alias twitter="google-chrome 'http://twitter.com/'"
+alias gauntface="google-chrome 'https://gauntface.com/blog'"
