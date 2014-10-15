@@ -1,26 +1,30 @@
+# Did you know that double quotes actually make a difference here?
+# Well I found that double quote meant the terminal executed some
+# commands on launch
+
 # Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~' # `cd` is probably faster to type though
 
 # Shortcuts
-alias dl="cd ~/Downloads"
-alias p="cd ~/Projects"
-alias s="cd ~/Projects/Sites"
-alias c="cd ~/Projects/Code"
-alias d="cd ~/Projects/Designs"
-alias t="cd ~/Projects/Tools"
+alias dl='cd ~/Downloads'
+alias p='cd ~/Projects'
+alias s='cd ~/Projects/Sites'
+alias c='cd ~/Projects/Code'
+alias d='cd ~/Projects/Designs'
+alias t='cd ~/Projects/Tools'
 
 # Start local server
-alias server="python -m SimpleHTTPServer"
+alias server='python -m SimpleHTTPServer'
 
-# be nice [Found here: http://unix.stackexchange.com/questions/85352/how-can-i-alias-sudo]
-alias please="sudo $(fc -ln -1)"
+# be nice (This is for zsh, others see: http://unix.stackexchange.com/questions/85352/how-can-i-alias-sudo)
+alias please='sudo $(fc -ln -1)'
 
 # List all files colorized in long format
-alias l="ls -l ${colorflag}"
+alias l='ls -l ${colorflag}'
 
-alias addJSCS="cp ~/Projects/Tools/Configs/jscsrc ./.jscsrc"
-alias addJSHint="cp ~/Projects/Tools/Configs/jshintrc ./.jshintrc"
+alias addJSCS='cp ~/Projects/Tools/Configs/jscsrc ./.jscsrc'
+alias addJSHint='cp ~/Projects/Tools/Configs/jshintrc ./.jshintrc'
