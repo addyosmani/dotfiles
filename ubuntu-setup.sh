@@ -7,7 +7,7 @@ sudo add-apt-repository ppa:nginx/stable -y
 # Perform repo update
 sudo apt-get update
 # Install Applications
-sudo apt-get install atom nginx curl git zsh xclip -y
+sudo apt-get install atom nginx curl git zsh xclip synaptic ruby -y
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
