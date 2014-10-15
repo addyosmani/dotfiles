@@ -17,7 +17,7 @@ alias t="cd ~/Projects/Tools"
 alias server="python -m SimpleHTTPServer"
 
 # be nice
-alias please=sudo
+alias please="sudo !!"
 
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
