@@ -16,8 +16,8 @@ alias t="cd ~/Projects/Tools"
 # Start local server
 alias server="python -m SimpleHTTPServer"
 
-# be nice
-alias please="sudo !!"
+# be nice [Found here: http://unix.stackexchange.com/questions/85352/how-can-i-alias-sudo]
+alias please="sudo $(fc -ln -1)"
 
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
