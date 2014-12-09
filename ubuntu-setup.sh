@@ -26,6 +26,7 @@ mkdir -p ~/Projects/Sites
 mkdir -p ~/Projects/Tools
 mkdir -p ~/Projects/Tools/Configs
 mkdir -p ~/Projects/Designs
+mkdir -p ~/Projects/Slides
 
 # Set up config files for jshint and jscs
 cp jscsrc ~/Projects/Tools/Configs/jscsrc
