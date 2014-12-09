@@ -18,6 +18,13 @@ aliases for each platform - so be warned.
 git clone https://github.com/gauntface/dotfiles.git && cd dotfiles && sh ubuntu-setup.sh
 ```
 
+**You will probably need to reboot** to make ZSH take control of your terminal.
+
+Next the list of stuff to do:
+
+* SSH on github.
+* Setup Atom and Sublime with the plugins you love.
+
 ### OS X
 
 ```bash
