@@ -24,6 +24,7 @@ Next the list of stuff to do:
 
 * SSH on github.
 * Setup Atom and Sublime with the plugins you love.
+* Add the ability to preview images from NAS: Nautilus -> Edit-> Preferences-> Preview
 
 ### OS X
 
