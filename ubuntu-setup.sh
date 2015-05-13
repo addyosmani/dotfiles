@@ -16,6 +16,7 @@ curl -L http://install.ohmyz.sh | sh
 chsh -s $(which zsh)
 
 cp ohmyzsh/zshrc ~/.zshrc
+cp npmrc ~/.npmrc
 
 cat aliases ubuntu-aliases > ~/.aliases
 
@@ -41,6 +42,9 @@ git config --global user.name "Matt Gaunt"
 # Install NPM
 curl -sL https://deb.nodesource.com/setup | sudo bash -
 sudo apt-get install -y nodejs
+
+# Set up npm for global install without sudo
+mkdir "${HOME}/.npm-packages"
 
 # Install commonly used npm deps
 npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
