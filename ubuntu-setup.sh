@@ -43,4 +43,4 @@ curl -sL https://deb.nodesource.com/setup | sudo bash -
 sudo apt-get install -y nodejs
 
 # Install commonly used npm deps
-sudo npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
+npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
