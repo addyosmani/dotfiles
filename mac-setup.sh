@@ -25,5 +25,11 @@ git config --global core.excludesfile '~/.gitignore_global'
 git config --global user.email "matt@gauntface.co.uk"
 git config --global user.name "Matt Gaunt"
 
+# Set up npm for global install without sudo
+mkdir "${HOME}/.npm-packages"
+
+# Set up npm for global install without sudo
+mkdir "${HOME}/.python-packages"
+
 # Install commonly used npm deps
 npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
