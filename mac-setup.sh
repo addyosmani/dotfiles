@@ -18,6 +18,7 @@ mkdir -p ~/Projects/Slides
 # Set up config files for jshint and jscs
 cp jscsrc ~/Projects/Tools/Configs/jscsrc
 cp jshintrc ~/Projects/Tools/Configs/jshintrc
+cp eslintrc ~/Projects/Tools/Configs/eslintrc
 
 # Set up git global values
 cp gitignore ~/.gitignore_global

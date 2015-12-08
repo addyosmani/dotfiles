@@ -28,3 +28,4 @@ alias l='ls -l ${colorflag}'
 
 alias addJSCS='cp ~/Projects/Tools/Configs/jscsrc ./.jscsrc'
 alias addJSHint='cp ~/Projects/Tools/Configs/jshintrc ./.jshintrc'
+alias addESLint='cp ~/Projects/Tools/Configs/eslintrc ./.eslintrc'
