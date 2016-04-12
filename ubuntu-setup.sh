@@ -41,7 +41,7 @@ git config --global user.email "matt@gauntface.co.uk"
 git config --global user.name "Matt Gaunt"
 
 # Install NPM
-curl -sL https://deb.nodesource.com/setup | sudo bash -
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Set up npm for global install without sudo
