@@ -52,3 +52,6 @@ mkdir "${HOME}/.python-packages"
 
 # Install commonly used npm deps
 npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
+
+# Install commonly used atom plugins
+apm install linter linter-eslint docblockr
