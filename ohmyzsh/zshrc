@@ -93,6 +93,5 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-
 PYTHONPATH="${HOME}/.python-packages/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHONPATH

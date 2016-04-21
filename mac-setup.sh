@@ -15,9 +15,7 @@ mkdir -p ~/Projects/Tools/Configs
 mkdir -p ~/Projects/Designs
 mkdir -p ~/Projects/Slides
 
-# Set up config files for jshint and jscs
-cp jscsrc ~/Projects/Tools/Configs/jscsrc
-cp jshintrc ~/Projects/Tools/Configs/jshintrc
+# Set up config files for eslint
 cp eslintrc ~/Projects/Tools/Configs/eslintrc
 
 # Set up git global values
@@ -33,4 +31,4 @@ mkdir "${HOME}/.npm-packages"
 mkdir "${HOME}/.python-packages"
 
 # Install commonly used npm deps
-npm install -g gulp grunt-cli jshint yo generator-webapp generator-gulp-webapp forever nodemon trash
+npm install -g gulp eslint forever nodemon trash
