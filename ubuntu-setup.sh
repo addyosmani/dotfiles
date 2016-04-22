@@ -16,6 +16,10 @@ curl -L http://install.ohmyz.sh | sh
 chsh -s $(which zsh)
 
 cp ohmyzsh/zshrc ~/.zshrc
+
+# Install gcloud
+curl https://sdk.cloud.google.com | bash
+
 cp npmrc ~/.npmrc
 
 cat aliases ubuntu-aliases > ~/.aliases

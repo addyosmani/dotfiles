@@ -12,4 +12,6 @@ alias facebook='google-chrome "http://facebook.com/"'
 alias twitter='google-chrome "http://twitter.com/"'
 alias gauntface='google-chrome "https://gauntface.com/blog"'
 
-PATH="${HOME}/Project/Tools/android-sdk-linux/:$PATH"
+PATH="${HOME}/Projects/Tools/android-sdk-linux/tools/:$PATH"
+PATH="${HOME}/Projects/Tools/android-sdk-linux/platform-tools/:$PATH"
+PATH="${HOME}/Projects/Tools/google-cloud-sdk/:$PATH"
