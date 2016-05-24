@@ -15,3 +15,4 @@ alias gauntface='google-chrome "https://gauntface.com/blog"'
 PATH="${HOME}/Projects/Tools/android-sdk-linux/tools/:$PATH"
 PATH="${HOME}/Projects/Tools/android-sdk-linux/platform-tools/:$PATH"
 PATH="${HOME}/Projects/Tools/google-cloud-sdk/:$PATH"
+PATH="${HOME}/Projects/Tools/wires/:$PATH"

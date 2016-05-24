@@ -18,7 +18,9 @@ chsh -s $(which zsh)
 cp ohmyzsh/zshrc ~/.zshrc
 
 # Install gcloud
-curl https://sdk.cloud.google.com | bash
+if [ -d "~/Projects/Tools/google-cloud-sdk/" ]; then
+ curl https://sdk.cloud.google.com | bash
+fi
 
 cp npmrc ~/.npmrc
 
