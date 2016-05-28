@@ -4,10 +4,14 @@ sudo add-apt-repository ppa:webupd8team/atom -y
 # Add Nginx Repo
 sudo add-apt-repository ppa:nginx/stable -y
 
+# Add Chrome Repo
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
 # Perform repo update
 sudo apt-get update
 # Install Applications
-sudo apt-get install atom nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre -y
+sudo apt-get install atom nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre google-chrome-stable google-chrome-beta google-chrome-unstable gparted -y
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
