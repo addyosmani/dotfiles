@@ -11,7 +11,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 # Perform repo update
 sudo apt-get update
 # Install Applications
-sudo apt-get install atom nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre google-chrome-stable google-chrome-beta google-chrome-unstable gparted -y
+sudo apt-get install atom nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre google-chrome-stable google-chrome-beta google-chrome-unstable gparted gscan2pdf -y
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
