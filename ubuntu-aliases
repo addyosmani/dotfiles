@@ -16,3 +16,6 @@ PATH="${HOME}/Projects/Tools/android-sdk-linux/tools/:$PATH"
 PATH="${HOME}/Projects/Tools/android-sdk-linux/platform-tools/:$PATH"
 PATH="${HOME}/Projects/Tools/google-cloud-sdk/:$PATH"
 PATH="${HOME}/Projects/Tools/wires/:$PATH"
+
+export FF_BETA_PATH="${HOME}/Projects/Tools/firefox-beta/firefox"
+export FF_NIGHTLY_PATH="${HOME}/Projects/Tools/firefox-nightly/firefox"

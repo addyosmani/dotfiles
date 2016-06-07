@@ -63,3 +63,24 @@ npm install -g gulp eslint forever nodemon trash
 
 # Install commonly used atom plugins
 apm install linter linter-eslint docblockr
+
+# Install FF Version
+# Delete old directory
+rm -rf ~/Projects/Tools/firefox-beta
+rm -rf ~/Projects/Tools/firefox-nightly
+
+# Unpack into tests directory
+wget 'https://download.mozilla.org/?product=firefox-beta-latest&lang=en-US&os=linux64' -O firefox-beta.tar.bz2
+wget 'https://download.mozilla.org/?product=firefox-nightly-latest&lang=en-US&os=linux64' -O firefox-nightly.tar.bz2
+
+# Unpack into tests directory
+tar xvjf firefox-beta.tar.bz2
+
+# Rename directory to firefox-beta
+mv ./firefox ~/Projects/Tools/firefox-beta
+
+tar xvjf firefox-nightly.tar.bz2
+mv ./firefox ~/Projects/Tools/firefox-nightly
+
+rm firefox-beta.tar.bz2
+rm firefox-nightly.tar.bz2
