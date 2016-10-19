@@ -48,8 +48,8 @@ git config --global core.excludesfile '~/.gitignore_global'
 git config --global user.email "matt@gauntface.co.uk"
 git config --global user.name "Matt Gaunt"
 
-# Install NPM
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+# Install NPM - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Set up npm for global install without sudo
