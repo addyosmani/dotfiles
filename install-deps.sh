@@ -21,9 +21,8 @@ ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 
 # https://github.com/rupa/z
 # z, oh how i love you
-mkdir -p ~/dotfiles/z
-curl https://raw.github.com/rupa/z/master/z.sh > ~/dotfiles/z/z.sh
-chmod +x ~/dotfiles/z/z.sh
+curl https://raw.github.com/rupa/z/master/z.sh > ~/dotfiles/utils/z.sh
+chmod +x ~/dotfiles/utils/z.sh
 
 # add this to the bash_profile file if it aint there.
 #   . ~/code/z/z.sh
@@ -32,7 +31,8 @@ cd ~/code
 git clone git://github.com/dronir/SpotifyControl.git
 
 # add DropBox uploader
-git clone git://github.com/andreafabrizi/Dropbox-Uploader.git
+curl https://raw2.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh > ~/dotfiles/utils/dropbox_uploader.sh
+chmod +x ~/dotfiles/utils/dropbox_uploader.sh
 
 
 # my magic photobooth symlink -> dropbox. I love it.
