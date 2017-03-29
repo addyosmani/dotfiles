@@ -41,5 +41,5 @@ Next the list of stuff to do:
 ### OS X
 
 ```bash
-git clone https://github.com/gauntface/dotfiles.git && cd dotfiles && sh ...-setup.sh
+git clone https://github.com/gauntface/dotfiles.git && cd dotfiles && sh mac-setup.sh
 ```
