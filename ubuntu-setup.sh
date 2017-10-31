@@ -1,6 +1,3 @@
-# Add Atom.io Repo
-sudo add-apt-repository ppa:webupd8team/atom -y
-
 # Add Nginx Repo
 sudo add-apt-repository ppa:nginx/stable -y
 
@@ -11,7 +8,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 # Perform repo update
 sudo apt-get update
 # Install Applications
-sudo apt-get install atom nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre google-chrome-stable google-chrome-beta google-chrome-unstable gparted gscan2pdf -y
+sudo apt-get install nginx curl git zsh xclip synaptic ruby openjdk-8-jdk openjdk-8-jre google-chrome-stable google-chrome-beta google-chrome-unstable gparted gscan2pdf -y
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
@@ -49,7 +46,7 @@ git config --global user.email "matt@gauntface.co.uk"
 git config --global user.name "Matt Gaunt"
 
 # Install NPM - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Set up npm for global install without sudo
@@ -59,28 +56,4 @@ mkdir "${HOME}/.npm-packages"
 mkdir "${HOME}/.python-packages"
 
 # Install commonly used npm deps
-npm install -g gulp eslint forever nodemon trash
-
-# Install commonly used atom plugins
-apm install linter linter-eslint docblockr
-
-# Install FF Version
-# Delete old directory
-rm -rf ~/Projects/Tools/firefox-beta
-rm -rf ~/Projects/Tools/firefox-nightly
-
-# Unpack into tests directory
-wget 'https://download.mozilla.org/?product=firefox-beta-latest&lang=en-US&os=linux64' -O firefox-beta.tar.bz2
-wget 'https://download.mozilla.org/?product=firefox-nightly-latest&lang=en-US&os=linux64' -O firefox-nightly.tar.bz2
-
-# Unpack into tests directory
-tar xvjf firefox-beta.tar.bz2
-
-# Rename directory to firefox-beta
-mv ./firefox ~/Projects/Tools/firefox-beta
-
-tar xvjf firefox-nightly.tar.bz2
-mv ./firefox ~/Projects/Tools/firefox-nightly
-
-rm firefox-beta.tar.bz2
-rm firefox-nightly.tar.bz2
+npm install -g gulp eslint forever nodemon
