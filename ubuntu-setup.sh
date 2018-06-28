@@ -24,11 +24,7 @@ TEMP_DIR="$(mktemp -d)"
 ERROR_LOG="${TEMP_DIR}/dotfile-install-err.log"
 
 echo -e "📦  Installing common dependencies..."
-sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
-echo -e "\n\t✅  Done\n"
-
-echo -e "📦  TODO: Download dotfiles to tools..."
-sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
+sudo apt-get install -y curl gparted &> ${ERROR_LOG}
 echo -e "\n\t✅  Done\n"
 
 echo -e "🖥️  Setting up Git..."

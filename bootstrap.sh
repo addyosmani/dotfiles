@@ -59,6 +59,8 @@ function installGit() {
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
     git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    (cd $DOTFILES_DIR; git fetch origin) &> ${ERROR_LOG}
+    (cd $DOTFILES_DIR; git reset origin/master --hard) &> ${ERROR_LOG}
     echo -e "\n\t✅  Done\n"
 }
 
@@ -67,8 +69,6 @@ function runSetup() {
     unameOut="$(uname -s)"
     case "${unameOut}" in
         Linux*)
-            echo -e "🐧  Starting Linux setup...\n"
-            # sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
             bash "${DOTFILES_DIR}/ubuntu-setup.sh"
             ;;
         Darwin*)
