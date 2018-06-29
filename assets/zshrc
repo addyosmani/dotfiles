@@ -16,6 +16,7 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(command-not-found npm)
 
 # This forces ZSH to use a user directory
+mkdir -p $HOME/.zsh
 ZSH_CACHE_DIR=$HOME/.zsh
 
 # Start oh-my-zsh...
