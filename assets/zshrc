@@ -15,6 +15,9 @@ DISABLE_UPDATE_PROMPT="true"
 # - npm: Provides auto-complete for NPM commands
 plugins=(command-not-found npm)
 
+# This forces ZSH to use a user directory
+ZSH_CACHE_DIR=$HOME/.zsh
+
 # Start oh-my-zsh...
 source $ZSH/oh-my-zsh.sh
 
