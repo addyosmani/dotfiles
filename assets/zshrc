@@ -3,5 +3,8 @@ TOOLS_DIR="${HOME}/Projects/Tools"
 CODE_DIR="${HOME}/Projects/Code"
 DOTFILES_DIR="${HOME}/Projects/Tools/dotfiles"
 
-source "${TOOLS_DIR}/powerlevel9k/powerlevel9k.zsh-theme"
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
+# Install theme
+ZSH_THEME="bira"

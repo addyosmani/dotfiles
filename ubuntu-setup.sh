@@ -47,21 +47,21 @@ function setupNPM() {
   echo -e "\n\t✅  Done\n"
 }
 
+function installZSH() {
+  echo -e "📦  Installing oh-my-zsh..."
+  curl -sL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | sudo -E zsh - &> ${ERROR_LOG}
+  echo -e "\n\t✅  Done\n"
+}
+
 function setupZSHRC() {
   echo -e "👻  Symlinking .zshrc..."
   ZSH_FILE="${HOME}/.zshrc"
   
   if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
-    rm "${ZSH_FILE}"
+    sudo rm "${ZSH_FILE}"
   fi
 
   echo -e "source ${DOTFILES_DIR}/assets/zshrc" > "${ZSH_FILE}"
-  echo -e "\n\t✅  Done\n"
-}
-
-function installZSHTheme() {
-  echo -e "📦  Installing ZSH Theme..."
-  git clone https://github.com/bhilburn/powerlevel9k.git "${TOOLS_DIR}/powerlevel9k" &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
@@ -78,8 +78,8 @@ installNode
 
 setupNPM
 
+installZSH
+
 setupZSHRC
 
-installZSHTheme
-
-echo -e "🎉  Finished.\n"
+echo -e "🎉  Finished but we need to reboot.\n"
