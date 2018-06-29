@@ -9,21 +9,25 @@ function uncaughtError {
   exit $?
 }
 
-function initTempDir() {
+function initDirectories() {
+  PROJECTS_DIR="${HOME}/Projects"
+  TOOLS_DIR="${HOME}/Projects/Tools"
+  CODE_DIR="${HOME}/Projects/Code"
+  DOTFILES_DIR="${HOME}/Projects/Tools/dotfiles"
   TEMP_DIR="$(mktemp -d)"
   ERROR_LOG="${TEMP_DIR}/dotfile-install-err.log"
 }
 
 function installCommonDeps() {
   echo -e "📦  Installing common dependencies..."
-  sudo apt-get install -y curl gparted &> ${ERROR_LOG}
+  sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
 function setupGit() {
   echo -e "🖥️  Setting up Git..."
   git config --global core.excludesfile "${DOTFILES_DIR}/assets/global-gitignore"
-  git config --global user.email "matt@gauntface.co.uk"
+  git config --global user.email "mattgaunt@google.com"
   git config --global user.name "Matt Gaunt"
   echo -e "\n\t✅  Done\n"
 }
@@ -37,15 +41,45 @@ function installNode() {
   echo -e "\n\t✅  Done\n"
 }
 
+function setupNPM() {
+  echo -e "️️🖥️  Setting up NPM..."
+  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh - &> ${ERROR_LOG}
+  echo -e "\n\t✅  Done\n"
+}
+
+function setupZSHRC() {
+  echo -e "👻  Symlinking .zshrc..."
+  ZSH_FILE="${HOME}/.zshrc"
+  
+  if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
+    rm "${ZSH_FILE}"
+  fi
+
+  echo -e "source ${DOTFILES_DIR}/assets/zshrc" > "${ZSH_FILE}"
+  echo -e "\n\t✅  Done\n"
+}
+
+function installZSHTheme() {
+  echo -e "📦  Installing ZSH Theme..."
+  git clone https://github.com/bhilburn/powerlevel9k.git "${TOOLS_DIR}/powerlevel9k" &> ${ERROR_LOG}
+  echo -e "\n\t✅  Done\n"
+}
+
 # -e means 'enable interpretation of backslash escapes'
 echo -e "\n📓  Installing @gauntface's Dotfiles\n"
 
-initTempDir
+initDirectories
 
 installCommonDeps
 
 setupGit
 
 installNode
+
+setupNPM
+
+setupZSHRC
+
+installZSHTheme
 
 echo -e "🎉  Finished.\n"
