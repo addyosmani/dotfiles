@@ -65,6 +65,12 @@ function setupZSHRC() {
   echo -e "\n\t✅  Done\n"
 }
 
+function switchToZSH() {
+  echo -e "🚧  Switching to ZSH..."
+  chsh -s $(which zsh) &> ${ERROR_LOG}
+  echo -e "\n\t✅  Done\n"
+}
+
 # -e means 'enable interpretation of backslash escapes'
 echo -e "\n📓  Installing @gauntface's Dotfiles\n"
 
