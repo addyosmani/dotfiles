@@ -3,5 +3,5 @@ TOOLS_DIR="${HOME}/Projects/Tools"
 CODE_DIR="${HOME}/Projects/Code"
 DOTFILES_DIR="${HOME}/Projects/Tools/dotfiles"
 
-source "${DOTFILES_DIR}/powerlevel9k/powerlevel9k.zsh-theme"
+source "${TOOLS_DIR}/powerlevel9k/powerlevel9k.zsh-theme"
 
