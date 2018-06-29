@@ -1,0 +1,19 @@
+# Did you know that double quotes actually make a difference here?
+# Well I found that double quote meant the terminal executed some
+# commands on launch
+
+# Easier navigation: .., ..., ~ and -
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~' # `cd` is probably faster to type though
+
+# Shortcuts
+alias d='cd ~/Downloads'
+alias p='cd ~/Projects'
+alias c='cd ~/Projects/Code'
+alias t='cd ~/Projects/Tools'
+
+# Start local server
+alias server='python -m SimpleHTTPServer --bind 127.0.0.1'

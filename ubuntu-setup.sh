@@ -67,7 +67,7 @@ function setupZSHRC() {
 
 function switchToZSH() {
   echo -e "🚧  Switching to ZSH..."
-  chsh -s $(which zsh) &> ${ERROR_LOG}
+  sudo chsh -s $(which zsh) &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
@@ -88,4 +88,4 @@ installZSH
 
 setupZSHRC
 
-echo -e "🎉  Finished.\n"
+echo -e "🎉  Finished, reboot to complete.\n"

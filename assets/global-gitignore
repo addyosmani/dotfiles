@@ -1,0 +1,20 @@
+# Generic directories to ignore
+gen/
+build/
+dist/
+
+# Language specific
+*.class
+
+# Android specific
+*.apk
+*.dex
+.idea
+*.iml # IntelliJ config files
+
+# OS X specific
+.DS_Store
+*.swp
+*.lock
+profile
+.Spotlight-V100
