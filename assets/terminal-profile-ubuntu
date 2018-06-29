@@ -1,5 +1,5 @@
 
 # Make Nautilus open with same command as OS X
 open() {
-    nautilus $1 >/dev/null 2>/dev/null & disown
+    nautilus $1 &>/dev/null & disown
 }

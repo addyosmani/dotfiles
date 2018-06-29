@@ -3,6 +3,7 @@ ASSETS_PATH="${HOME}/Projects/Tools/dotfiles/assets"
 # Add alises
 source "${ASSETS_PATH}/aliases"
 
+unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)
         source "${ASSETS_PATH}/terminal-profile-ubuntu"
