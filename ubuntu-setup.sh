@@ -82,4 +82,4 @@ installZSH
 
 setupZSHRC
 
-echo -e "🎉  Finished but we need to reboot.\n"
+echo -e "🎉  Finished.\n"

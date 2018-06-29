@@ -8,3 +8,6 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Install theme
 ZSH_THEME="bira"
+
+# Start oh-my-zsh...
+source $ZSH/oh-my-zsh.sh
