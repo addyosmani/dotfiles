@@ -37,7 +37,7 @@ function installNode() {
   echo -e "📦  Installing Node.js..."
   if ! [ -x "$(command -v node)" ]; then
     NODE_VERSION=10
-    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | sudo -E bash - &> ${ERROR_LOG}
+    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | bash - &> ${ERROR_LOG}
     sudo apt-get install -y nodejs &> ${ERROR_LOG}
   fi
   echo -e "\n\t✅  Done\n"
@@ -45,13 +45,13 @@ function installNode() {
 
 function setupNPM() {
   echo -e "️️🖥️  Setting up NPM..."
-  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh - &> ${ERROR_LOG}
+  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | bash - &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
 function installZSH() {
   echo -e "📦  Installing oh-my-zsh..."
-  curl -sL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | sudo -E zsh - &> ${ERROR_LOG}
+  curl -sL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | zsh - &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
