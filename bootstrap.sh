@@ -70,12 +70,10 @@ function runSetup() {
     unameOut="$(uname -s)"
     case "${unameOut}" in
         Linux*)
-            bash "${DOTFILES_DIR}/ubuntu-setup.sh"
+            bash "${DOTFILES_DIR}/setup.sh"
             ;;
         Darwin*)
-            echo "Running on OS X but need to implement setup logic: ${unameOut}" > "$ERROR_LOG"
-            uncaughtError
-            exit 1
+            bash "${DOTFILES_DIR}/setup.sh"
             ;;
         *)
             echo "Running on unknown environment: ${unameOut}" > "$ERROR_LOG"
