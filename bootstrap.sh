@@ -75,11 +75,9 @@ function installGit() {
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
     if [[ "${IS_CORP_INSTALL}" = true ]]; then
-        echo "USING HTTPS FOR CLONE"
-        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR}
+        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
     else
-        echo "USING SSH FOR CLONE"
-        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR}
+        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
     fi
 
     (cd $DOTFILES_DIR; git fetch origin)
