@@ -93,9 +93,30 @@ function setupCorpSpecific() {
   select yn in "Yes" "No"; do
       case $yn in
           Yes )
-              echo -e "🚧  Do corp magic here..."
+              getCorpCommand
               break;;
           No )
+              break;;
+      esac
+  done
+  echo ""
+}
+
+function getCorpCommand() {
+  echo ""
+  read -p "Please enter the command from http://go/user.git/mattgaunt/dotfiles: " CORP_COMMAND
+  echo -e "\nDoes this look right? (Please enter a number)"
+  echo -e "\n\t${CORP_COMMAND}\n"
+  select yn in "Yes" "No (Retry)" "No (Skip)"; do
+      case $yn in
+          Yes )
+              echo ""
+              eval $CORP_COMMAND
+              break;;
+          "No (Retry)" )
+              getCorpCommand
+              break;;
+          "No (Skip)" )
               break;;
       esac
   done
