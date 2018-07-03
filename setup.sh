@@ -85,11 +85,11 @@ function switchToZSH() {
 }
 
 function setupCorpSpecific() {
-  if [ ! $IS_CORP_INSTALL ] {
+  if [[ $IS_CORP_INSTALL ]]; then
     return
-  }
+  fi
 
-  echo "💼  Would you like to set up corp specific dotfiles?"
+  echo "💼  Would you like to set up corp specific dotfiles?  (Please enter a number)"
   select yn in "Yes" "No"; do
       case $yn in
           Yes )
@@ -99,6 +99,7 @@ function setupCorpSpecific() {
               break;;
       esac
   done
+  echo ""
 }
 
 # -e means 'enable interpretation of backslash escapes'
