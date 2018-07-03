@@ -75,13 +75,13 @@ function installGit() {
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
     if [[ $IS_CORP_INSTALL ]]; then
-        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR}
     else
-        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR}
     fi
 
-    (cd $DOTFILES_DIR; git fetch origin) &> ${ERROR_LOG}
-    (cd $DOTFILES_DIR; git reset origin/master --hard) &> ${ERROR_LOG}
+    (cd $DOTFILES_DIR; git fetch origin)
+    (cd $DOTFILES_DIR; git reset origin/master --hard)
     echo -e "\n\t✅  Done\n"
 }
 
