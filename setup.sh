@@ -84,6 +84,23 @@ function switchToZSH() {
   echo -e "\n\t✅  Done\n"
 }
 
+function setupCorpSpecific() {
+  if [ ! $IS_CORP_INSTALL ] {
+    return
+  }
+
+  echo "💼  Would you like to set up corp specific dotfiles?"
+  select yn in "Yes" "No"; do
+      case $yn in
+          Yes )
+              echo -e "🚧  Do corp magic here..."
+              break;;
+          No )
+              break;;
+      esac
+  done
+}
+
 # -e means 'enable interpretation of backslash escapes'
 echo -e "\n📓  Installing @gauntface's Dotfiles\n"
 
@@ -100,5 +117,7 @@ setupNPM
 installZSH
 
 setupZSHRC
+
+setupCorpSpecific
 
 echo -e "🎉  Finished, reboot to complete.\n"

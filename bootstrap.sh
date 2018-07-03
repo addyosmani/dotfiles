@@ -12,6 +12,21 @@ function uncaughtError {
   exit $?
 }
 
+function isCorpInstall() {
+    echo "💼  Is this a corp install? (Please enter a number)"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes )
+                IS_CORP_INSTALL=true
+                break;;
+            No )
+                IS_CORP_INSTALL=false
+                break;;
+        esac
+    done
+    echo ""
+}
+
 function initTempDir() {
     TEMP_DIR="$(mktemp -d)"
     ERROR_LOG="${TEMP_DIR}/dotfile-install-err.log"
@@ -59,7 +74,12 @@ function installGit() {
 
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
-    git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    if [[ $IS_CORP_INSTALL ]]; then
+        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    else
+        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    fi
+
     (cd $DOTFILES_DIR; git fetch origin) &> ${ERROR_LOG}
     (cd $DOTFILES_DIR; git reset origin/master --hard) &> ${ERROR_LOG}
     echo -e "\n\t✅  Done\n"
@@ -85,6 +105,8 @@ function runSetup() {
 
 # -e means 'enable interpretation of backslash escapes'
 echo -e "\n👢  Bootstrapping @gauntface's Dotfiles\n"
+
+isCorpInstall
 
 initTempDir
 
