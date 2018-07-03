@@ -20,7 +20,18 @@ function initDirectories() {
 
 function installCommonDeps() {
   echo -e "📦  Installing common dependencies..."
-  sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
   echo -e "\n\t✅  Done\n"
 }
 
@@ -58,7 +69,7 @@ function installZSH() {
 function setupZSHRC() {
   echo -e "👻  Symlinking .zshrc..."
   ZSH_FILE="${HOME}/.zshrc"
-  
+
   if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
     rm "${ZSH_FILE}" &> ${ERROR_LOG}
   fi

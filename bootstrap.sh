@@ -5,7 +5,7 @@ trap uncaughtError ERR
 
 function uncaughtError {
   echo -e "\n\t❌  Error\n"
-  if [[ -v ERROR_LOG ]]; then
+  if [[ ! -z "${ERROR_LOG}" ]]; then
     echo -e "\t$(<${ERROR_LOG})"
   fi
   echo -e "\n\t😞  Sorry\n"
@@ -43,9 +43,10 @@ function installGit() {
             sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
             ;;
         Darwin*)
-            echo "Running on OS X but need to implement install git logic: ${unameOut}" > "$ERROR_LOG"
-            uncaughtError
-            exit 1
+            # Assume OS X has Git pre-instralled
+            # echo "Running on OS X but need to implement install git logic: ${unameOut}" > "$ERROR_LOG"
+            # uncaughtError
+            # exit 1
             ;;
         *)
             echo "Running on unknown environment: ${unameOut}" > "$ERROR_LOG"
