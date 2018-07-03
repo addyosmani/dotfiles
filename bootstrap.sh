@@ -74,7 +74,7 @@ function installGit() {
 
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
-    if [[ $IS_CORP_INSTALL ]]; then
+    if [[ $IS_CORP_INSTALL = true ]]; then
         git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR}
     else
         git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR}

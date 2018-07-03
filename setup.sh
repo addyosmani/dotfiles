@@ -85,7 +85,7 @@ function switchToZSH() {
 }
 
 function setupCorpSpecific() {
-  if [[ $IS_CORP_INSTALL ]]; then
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
     return
   fi
 
