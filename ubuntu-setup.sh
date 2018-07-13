@@ -70,6 +70,7 @@ function setupZSHRC() {
 function switchToZSH() {
   echo -e "🚧  Switching to ZSH..."
   chsh -s $(which zsh) &> ${ERROR_LOG}
+  zsh &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
@@ -84,10 +85,12 @@ setupGit
 
 installNode
 
-setupNPM
-
 installZSH
 
 setupZSHRC
+
+switchToZSH
+
+setupNPM
 
 echo -e "🎉  Finished, reboot to complete.\n"
