@@ -56,7 +56,7 @@ function installNode() {
 
 function setupNPM() {
   echo -e "️️🖥️  Setting up NPM..."
-  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | zsh - &> ${ERROR_LOG}
+  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh - &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 

@@ -24,3 +24,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Add custom terminal setup
 source "${HOME}/Projects/Tools/dotfiles/assets/terminal-profile"
+
+# Add NPM-Packages directory
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
+export PATH="$NPM_PACKAGES/bin:$PATH"
