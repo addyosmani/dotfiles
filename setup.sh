@@ -56,7 +56,7 @@ function installNode() {
 
 function setupNPM() {
   echo -e "️️🖥️  Setting up NPM..."
-  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | bash - &> ${ERROR_LOG}
+  curl -sL https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | zsh - &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
@@ -82,7 +82,6 @@ function switchToZSH() {
   echo -e "🚧  Switching to ZSH..."
   # Changing shell requires user input.
   chsh -s $(which zsh)
-  zsh &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
 }
 
