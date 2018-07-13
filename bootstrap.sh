@@ -5,11 +5,26 @@ trap uncaughtError ERR
 
 function uncaughtError {
   echo -e "\n\t❌  Error\n"
-  if [[ -v ERROR_LOG ]]; then
+  if [[ ! -z "${ERROR_LOG}" ]]; then
     echo -e "\t$(<${ERROR_LOG})"
   fi
   echo -e "\n\t😞  Sorry\n"
   exit $?
+}
+
+function isCorpInstall() {
+    echo "💼  Is this a corp install? (Please enter a number)"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes )
+                IS_CORP_INSTALL=true
+                break;;
+            No )
+                IS_CORP_INSTALL=false
+                break;;
+        esac
+    done
+    echo ""
 }
 
 function initTempDir() {
@@ -43,9 +58,10 @@ function installGit() {
             sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
             ;;
         Darwin*)
-            echo "Running on OS X but need to implement install git logic: ${unameOut}" > "$ERROR_LOG"
-            uncaughtError
-            exit 1
+            # Assume OS X has Git pre-instralled
+            # echo "Running on OS X but need to implement install git logic: ${unameOut}" > "$ERROR_LOG"
+            # uncaughtError
+            # exit 1
             ;;
         *)
             echo "Running on unknown environment: ${unameOut}" > "$ERROR_LOG"
@@ -58,9 +74,14 @@ function installGit() {
 
 function cloneDotfiles() {
     echo -e "🖥  Cloning dotfiles..."
-    git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
-    (cd $DOTFILES_DIR; git fetch origin) &> ${ERROR_LOG}
-    (cd $DOTFILES_DIR; git reset origin/master --hard) &> ${ERROR_LOG}
+    if [[ "${IS_CORP_INSTALL}" = true ]]; then
+        git clone https://github.com/gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    else
+        git clone git@github.com:gauntface/dotfiles.git ${DOTFILES_DIR} &> ${ERROR_LOG}
+    fi
+
+    (cd $DOTFILES_DIR; git fetch origin)
+    (cd $DOTFILES_DIR; git reset origin/master --hard)
     echo -e "\n\t✅  Done\n"
 }
 
@@ -69,12 +90,10 @@ function runSetup() {
     unameOut="$(uname -s)"
     case "${unameOut}" in
         Linux*)
-            bash "${DOTFILES_DIR}/ubuntu-setup.sh"
+            bash "${DOTFILES_DIR}/setup.sh"
             ;;
         Darwin*)
-            echo "Running on OS X but need to implement setup logic: ${unameOut}" > "$ERROR_LOG"
-            uncaughtError
-            exit 1
+            bash "${DOTFILES_DIR}/setup.sh"
             ;;
         *)
             echo "Running on unknown environment: ${unameOut}" > "$ERROR_LOG"
@@ -86,6 +105,8 @@ function runSetup() {
 
 # -e means 'enable interpretation of backslash escapes'
 echo -e "\n👢  Bootstrapping @gauntface's Dotfiles\n"
+
+isCorpInstall
 
 initTempDir
 

@@ -20,7 +20,18 @@ function initDirectories() {
 
 function installCommonDeps() {
   echo -e "📦  Installing common dependencies..."
-  sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
   echo -e "\n\t✅  Done\n"
 }
 
@@ -58,7 +69,7 @@ function installZSH() {
 function setupZSHRC() {
   echo -e "👻  Symlinking .zshrc..."
   ZSH_FILE="${HOME}/.zshrc"
-  
+
   if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
     rm "${ZSH_FILE}" &> ${ERROR_LOG}
   fi
@@ -72,6 +83,45 @@ function switchToZSH() {
   chsh -s $(which zsh) &> ${ERROR_LOG}
   zsh &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
+}
+
+function setupCorpSpecific() {
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+    return
+  fi
+
+  echo "💼  Would you like to set up corp specific dotfiles?  (Please enter a number)"
+  select yn in "Yes" "No"; do
+      case $yn in
+          Yes )
+              getCorpCommand
+              break;;
+          No )
+              break;;
+      esac
+  done
+  echo ""
+}
+
+function getCorpCommand() {
+  echo ""
+  read -p "Please enter the command from http://go/user.git/mattgaunt/dotfiles: " CORP_COMMAND
+  echo -e "\nDoes this look right? (Please enter a number)"
+  echo -e "\n\t${CORP_COMMAND}\n"
+  select yn in "Yes" "No (Retry)" "No (Skip)"; do
+      case $yn in
+          Yes )
+              echo ""
+              eval $CORP_COMMAND
+              break;;
+          "No (Retry)" )
+              getCorpCommand
+              break;;
+          "No (Skip)" )
+              break;;
+      esac
+  done
+  echo ""
 }
 
 # -e means 'enable interpretation of backslash escapes'
@@ -91,6 +141,9 @@ setupZSHRC
 
 switchToZSH
 
+# Setup NPM *after* ZSH to ensure it's configured for ZSH correctly
 setupNPM
+
+setupCorpSpecific
 
 echo -e "🎉  Finished, reboot to complete.\n"
