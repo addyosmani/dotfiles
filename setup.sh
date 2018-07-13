@@ -80,6 +80,7 @@ function setupZSHRC() {
 
 function switchToZSH() {
   echo -e "🚧  Switching to ZSH..."
+  # Changing shell requires user input.
   chsh -s $(which zsh)
   zsh &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
