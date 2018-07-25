@@ -1,3 +1,9 @@
+function sourceIfPossible() {
+    if [[ -r $1 ]]; then
+        source $1
+    fi
+}
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -29,3 +35,6 @@ source "${HOME}/Projects/Tools/dotfiles/assets/terminal-profile"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
 export PATH="$NPM_PACKAGES/bin:$PATH"
+
+# Load corp dotfiles if they exist
+sourceIfPossible("${HOME}/Projects/Tools/corp-dotfiles/assets/corp.zshrc")
