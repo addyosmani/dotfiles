@@ -67,7 +67,7 @@ function installZSH() {
 }
 
 function setupZSHRC() {
-  echo -e "👻  Symlinking .zshrc..."
+  echo -e "👻  Setting up .zshrc..."
   ZSH_FILE="${HOME}/.zshrc"
 
   if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
