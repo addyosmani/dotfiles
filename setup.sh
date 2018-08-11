@@ -48,7 +48,7 @@ function installNode() {
   echo -e "📦  Installing Node.js..."
   if ! [ -x "$(command -v node)" ]; then
     NODE_VERSION=10
-    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | bash - &> ${ERROR_LOG}
+    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | sudo bash - &> ${ERROR_LOG}
     sudo apt-get install -y nodejs &> ${ERROR_LOG}
   fi
   echo -e "\n\t✅  Done\n"
