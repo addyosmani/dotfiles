@@ -85,6 +85,25 @@ function switchToZSH() {
   echo -e "\n\t✅  Done\n"
 }
 
+function installStockGnome() {
+  echo -e "📦  Installing oh-my-zsh..."
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          sudo apt-get install -y gnome-session &> ${ERROR_LOG}
+          # Change the login to gnome-shell
+          sudo update-alternatives --config gdm3.css
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
+  echo -e "\n\t✅  Done\n"
+}
+
 function setupCorpSpecific() {
   if [[ "${IS_CORP_INSTALL}" = true ]]; then
     return
@@ -143,6 +162,8 @@ switchToZSH
 
 # Setup NPM *after* ZSH to ensure it's configured for ZSH correctly
 setupNPM
+
+installStockGnome
 
 setupCorpSpecific
 
