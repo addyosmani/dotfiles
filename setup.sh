@@ -86,7 +86,7 @@ function switchToZSH() {
 }
 
 function installStockGnome() {
-  echo -e "📦  Installing oh-my-zsh..."
+  echo -e "📦  Installing stock Gnome..."
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
