@@ -35,3 +35,6 @@ CORP_ZSHRC="${HOME}/Projects/Tools/corp-dotfiles/assets/corp.zshrc"
 if [[ -r $CORP_ZSHRC ]]; then
     source $CORP_ZSHRC
 fi
+
+# fpath is used for auto-completion in docker-compose https://docs.docker.com/compose/completion/#zsh
+fpath=(~/.zsh/completion $fpath)
