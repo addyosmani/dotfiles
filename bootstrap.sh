@@ -55,7 +55,7 @@ function installGit() {
     unameOut="$(uname -s)"
     case "${unameOut}" in
         Linux*)
-            sudo apt-get install -y git curl gparted &> ${ERROR_LOG}
+            sudo apt-get install -y git curl gparted xclip &> ${ERROR_LOG}
             ;;
         Darwin*)
             # Assume OS X has Git pre-instralled
@@ -70,6 +70,33 @@ function installGit() {
             ;;
     esac
     echo -e "\n\t✅  Done\n"
+}
+
+function setupSSHKeys() {
+  echo -e "🔑  Setting up SSH Key..."
+  if [ -f " ~/.ssh/id_rsa" ] ; then
+    ssh-keygen -t rsa -b 4096 -C "matt@gauntface.co.uk"
+    eval "$(ssh-agent -s)" &> ${ERROR_LOG}
+    ssh-add ~/.ssh/id_rsa
+
+    unameOut="$(uname -s)"
+    case "${unameOut}" in
+        Linux*)
+            xclip -sel clip < ~/.ssh/id_rsa.pub
+            ;;
+        Darwin*)
+            pbcopy < ~/.ssh/id_rsa.pub
+            ;;
+        *)
+            # NOOP
+            ;;
+  fi
+
+  echo -e "💼  Your SSH key has been copied to your clipboard, please add it to https://github.com/settings/keys and hit enter"
+  select yn in "Enter"; do
+  done
+
+  echo -e "\n\t✅  Done\n"
 }
 
 function cloneDotfiles() {
@@ -113,6 +140,8 @@ initTempDir
 setupDirectories
 
 installGit
+
+setupSSHKeys
 
 cloneDotfiles
 
