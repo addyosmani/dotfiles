@@ -90,6 +90,7 @@ function setupSSHKeys() {
         *)
             # NOOP
             ;;
+    esac
   fi
 
   echo -e "💼  Your SSH key has been copied to your clipboard, please add it to https://github.com/settings/keys and hit enter"
