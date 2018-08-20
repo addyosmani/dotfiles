@@ -73,11 +73,12 @@ function installGit() {
 }
 
 function setupSSHKeys() {
-  echo -e "🔑  Setting up SSH Key..."
-  if [ -f " ~/.ssh/id_rsa" ] ; then
-    ssh-keygen -t rsa -b 4096 -C "matt@gauntface.co.uk"
-    eval "$(ssh-agent -s)" &> ${ERROR_LOG}
-    ssh-add ~/.ssh/id_rsa
+    echo -e "🔑  Setting up SSH Key..."
+    if [ -f " ~/.ssh/id_rsa" ] ; then
+        ssh-keygen -t rsa -b 4096 -C "matt@gauntface.co.uk"
+        eval "$(ssh-agent -s)" &> ${ERROR_LOG}
+        ssh-add ~/.ssh/id_rsa
+    fi
 
     unameOut="$(uname -s)"
     case "${unameOut}" in
@@ -91,12 +92,9 @@ function setupSSHKeys() {
             # NOOP
             ;;
     esac
-  fi
 
-  echo -e "💼  Your SSH key has been copied to your clipboard, please add it to https://github.com/settings/keys and hit enter"
-  select yn in "Enter"; do
-  done
-
+  echo -e "📋  Your SSH key has been copied to your clipboard, please add it to https://github.com/settings/keys"
+  read -p "Press enter to continue"
   echo -e "\n\t✅  Done\n"
 }
 
