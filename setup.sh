@@ -48,7 +48,7 @@ function installNode() {
   echo -e "📦  Installing Node.js..."
   if ! [ -x "$(command -v node)" ]; then
     NODE_VERSION=10
-    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | bash - &> ${ERROR_LOG}
+    curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | sudo bash - &> ${ERROR_LOG}
     sudo apt-get install -y nodejs &> ${ERROR_LOG}
   fi
   echo -e "\n\t✅  Done\n"
@@ -67,7 +67,7 @@ function installZSH() {
 }
 
 function setupZSHRC() {
-  echo -e "👻  Symlinking .zshrc..."
+  echo -e "👻  Setting up .zshrc..."
   ZSH_FILE="${HOME}/.zshrc"
 
   if [ -L "${ZSH_FILE}" ] || [ -f "${ZSH_FILE}" ] ; then
@@ -82,6 +82,25 @@ function switchToZSH() {
   echo -e "🚧  Switching to ZSH..."
   # Changing shell requires user input.
   chsh -s $(which zsh)
+  echo -e "\n\t✅  Done\n"
+}
+
+function installStockGnome() {
+  echo -e "📦  Installing stock Gnome..."
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          sudo apt-get install -y gnome-session &> ${ERROR_LOG}
+          # Change the login to gnome-shell
+          sudo update-alternatives --config gdm3.css
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
   echo -e "\n\t✅  Done\n"
 }
 
@@ -143,6 +162,8 @@ switchToZSH
 
 # Setup NPM *after* ZSH to ensure it's configured for ZSH correctly
 setupNPM
+
+installStockGnome
 
 setupCorpSpecific
 

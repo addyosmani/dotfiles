@@ -29,3 +29,12 @@ source "${HOME}/Projects/Tools/dotfiles/assets/terminal-profile"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
 export PATH="$NPM_PACKAGES/bin:$PATH"
+
+# Load corp dotfiles if they exist
+CORP_ZSHRC="${HOME}/Projects/Tools/corp-dotfiles/assets/corp.zshrc"
+if [[ -r $CORP_ZSHRC ]]; then
+    source $CORP_ZSHRC
+fi
+
+# fpath is used for auto-completion in docker-compose https://docs.docker.com/compose/completion/#zsh
+fpath=(~/.zsh/completion $fpath)
