@@ -16,4 +16,4 @@ alias c='cd ~/Projects/Code'
 alias t='cd ~/Projects/Tools'
 
 # Start local server
-alias server='python -m SimpleHTTPServer --bind 127.0.0.1'
+alias server='python3 -m http.server --bind 127.0.0.1'
