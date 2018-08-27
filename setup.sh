@@ -21,7 +21,7 @@ function initDirectories() {
   echo -e "\tProjects:\t${PROJECTS_DIR}"
   echo -e "\tTools:\t\t${TOOLS_DIR}"
   echo -e "\tCode:\t\t${CODE_DIR}"
-  echo -e "\Dotfiles:\t\t${DOTFILES_DIR}"
+  echo -e "\tDotfiles:\t\t${DOTFILES_DIR}"
   echo -e "\tTemp:\t\t${TEMP_DIR}"
   echo -e "\n\t✔️  Done\n"
 }
