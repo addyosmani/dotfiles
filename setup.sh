@@ -133,7 +133,7 @@ function setupCorpSpecific() {
 
 function getCorpCommand() {
   echo ""
-  read -p "Please enter the command from http://go/user.git/mattgaunt/dotfiles: " CORP_COMMAND
+  read -p "Please enter the command from http://go/user.git/mattgaunt/dotfiles : " CORP_COMMAND
   echo -e "\nDoes this look right? (Please enter a number)"
   echo -e "\n\t${CORP_COMMAND}\n"
   select yn in "Yes" "No (Retry)" "No (Skip)"; do
