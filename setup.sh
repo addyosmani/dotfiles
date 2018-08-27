@@ -98,7 +98,8 @@ function installStockGnome() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
-          sudo apt-get install -y gnome-session &> ${ERROR_LOG}
+          # This can display an interactive screen.
+          sudo apt-get install -y gnome-session
           # Change the login to gnome-shell
           sudo update-alternatives --config gdm3.css
           ;;
