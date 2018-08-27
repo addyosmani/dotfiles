@@ -16,6 +16,14 @@ function initDirectories() {
   DOTFILES_DIR="${HOME}/Projects/Tools/dotfiles"
   TEMP_DIR="$(mktemp -d)"
   ERROR_LOG="${TEMP_DIR}/dotfile-install-err.log"
+  
+  echo -e "📂  Setting up directories..."
+  echo -e "\tProjects:\t${PROJECTS_DIR}"
+  echo -e "\tTools:\t\t${TOOLS_DIR}"
+  echo -e "\tCode:\t\t${CODE_DIR}"
+  echo -e "\Dotfiles:\t\t${DOTFILES_DIR}"
+  echo -e "\tTemp:\t\t${TEMP_DIR}"
+  echo -e "\n\t✔️  Done\n"
 }
 
 function installCommonDeps() {
