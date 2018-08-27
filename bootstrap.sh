@@ -74,7 +74,7 @@ function installGit() {
 
 function setupSSHKeys() {
     echo -e "🔑  Setting up SSH Key..."
-    if [ ! -f " ~/.ssh/id_rsa" ] ; then
+    if [ ! -f "${HOME}/.ssh/id_rsa" ] ; then
         ssh-keygen -t rsa -b 4096 -C "matt@gauntface.co.uk"
         eval "$(ssh-agent -s)" &> ${ERROR_LOG}
         ssh-add ~/.ssh/id_rsa
