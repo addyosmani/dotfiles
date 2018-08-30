@@ -94,6 +94,10 @@ function switchToZSH() {
 }
 
 function installStockGnome() {
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+    return
+  fi
+  
   echo -e "📦  Installing stock Gnome..."
   unameOut="$(uname -s)"
   case "${unameOut}" in
