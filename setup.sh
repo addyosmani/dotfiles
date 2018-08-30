@@ -118,7 +118,7 @@ function installStockGnome() {
 }
 
 function setupCorpSpecific() {
-  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+  if [[ "${IS_CORP_INSTALL}" = false ]]; then
     return
   fi
 
