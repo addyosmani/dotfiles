@@ -116,10 +116,11 @@ function runSetup() {
     unameOut="$(uname -s)"
     case "${unameOut}" in
         Linux*)
-            bash "${DOTFILES_DIR}/setup.sh"
+            # `source` is used so the script inherits environment variables
+            source "${DOTFILES_DIR}/setup.sh"
             ;;
         Darwin*)
-            bash "${DOTFILES_DIR}/setup.sh"
+            source "${DOTFILES_DIR}/setup.sh"
             ;;
         *)
             echo "Running on unknown environment: ${unameOut}" > "$ERROR_LOG"
