@@ -103,7 +103,7 @@ function installStockGnome() {
   case "${unameOut}" in
       Linux*)
           # This can display an interactive screen.
-          sudo apt-get install -y gnome-session vanilla-gnome-default-settings vanilla-gnome-desktop &> ${ERROR_LOG}
+          sudo apt-get install -y gnome-session vanilla-gnome-default-settings &> ${ERROR_LOG}
           # Change the login to gnome-shell
           sudo update-alternatives --config gdm3.css
           ;;
