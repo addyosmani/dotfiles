@@ -118,6 +118,10 @@ function installStockGnome() {
 }
 
 function installChrome() {
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+    return
+  fi
+  
   echo -e "🌎  Installing Chrome..."
   unameOut="$(uname -s)"
   case "${unameOut}" in
