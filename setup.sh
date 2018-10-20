@@ -103,7 +103,7 @@ function installStockGnome() {
   case "${unameOut}" in
       Linux*)
           # This can display an interactive screen.
-          sudo apt-get install -y gnome-session vanilla-gnome-default-settings vanilla-gnome-desktop
+          sudo apt-get install -y gnome-session vanilla-gnome-default-settings vanilla-gnome-desktop &> ${ERROR_LOG}
           # Change the login to gnome-shell
           sudo update-alternatives --config gdm3.css
           ;;
@@ -130,8 +130,8 @@ function installChrome() {
           if [ ! -f /etc/apt/sources.list.d/google.list ]; then
 	    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' &> ${ERROR_LOG}
 	  fi
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          sudo apt-get update &> ${ERROR_LOG}
+          sudo apt-get install -y google-chrome-stable &> ${ERROR_LOG}
           ;;
       Darwin*)
           # NOOP
