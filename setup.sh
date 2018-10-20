@@ -31,7 +31,7 @@ function installCommonDeps() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
-          sudo apt-get install -y curl gparted zsh &> ${ERROR_LOG}
+          sudo apt-get install -y curl gparted zsh synaptic &> ${ERROR_LOG}
           ;;
       Darwin*)
           # NOOP
@@ -103,7 +103,7 @@ function installStockGnome() {
   case "${unameOut}" in
       Linux*)
           # This can display an interactive screen.
-          sudo apt-get install -y gnome-session
+          sudo apt-get install -y gnome-session vanilla-gnome-default-settings
           # Change the login to gnome-shell
           sudo update-alternatives --config gdm3.css
           ;;
