@@ -117,6 +117,28 @@ function installStockGnome() {
   echo -e "\n\t✅  Done\n"
 }
 
+function installChrome() {
+  echo -e "🌎  Installing Chrome..."
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - &> ${ERROR_LOG}
+          if [ ! -f /etc/apt/sources.list.d/google.list ]; then
+	    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' &> ${ERROR_LOG}
+	  fi
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
+  echo -e "\n\t✅  Done\n"
+}
+
 function setupCorpSpecific() {
   if [[ "${IS_CORP_INSTALL}" = false ]]; then
     return
@@ -177,6 +199,8 @@ switchToZSH
 setupNPM
 
 installStockGnome
+
+installChrome
 
 setupCorpSpecific
 
