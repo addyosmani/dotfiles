@@ -69,6 +69,10 @@ function setupNPM() {
 }
 
 function installZSH() {
+  if [[ "${SHELL}" = "ZSH" ]]; then
+    return
+  fi
+
   echo -e "📦  Installing oh-my-zsh..."
   curl -sL "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh" | zsh - &> ${ERROR_LOG}
   echo -e "\n\t✅  Done\n"
@@ -87,6 +91,10 @@ function setupZSHRC() {
 }
 
 function switchToZSH() {
+  if [[ "${SHELL}" = "ZSH" ]]; then
+    return
+  fi
+
   echo -e "🚧  Switching to ZSH..."
   # Changing shell requires user input.
   chsh -s $(which zsh)
@@ -152,7 +160,7 @@ function installChrome() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &> ${ERROR_LOG}
+          curl --silent https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &> ${ERROR_LOG}
           sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/  &> ${ERROR_LOG}
           if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
 	    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' &> ${ERROR_LOG}
