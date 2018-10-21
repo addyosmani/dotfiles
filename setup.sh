@@ -69,7 +69,7 @@ function setupNPM() {
 }
 
 function installZSH() {
-  if [[ "${SHELL}" = "ZSH" ]]; then
+  if [[ "${SHELL}" = "/usr/bin/zsh" ]]; then
     return
   fi
 
@@ -91,7 +91,7 @@ function setupZSHRC() {
 }
 
 function switchToZSH() {
-  if [[ "${SHELL}" = "ZSH" ]]; then
+  if [[ "${SHELL}" = "/usr/bin/zsh" ]]; then
     return
   fi
 
