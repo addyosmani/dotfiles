@@ -143,6 +143,33 @@ function installChrome() {
   echo -e "\n\t✅  Done\n"
 }
 
+function installChrome() {
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+    return
+  fi
+  
+  echo -e "📝  Installing VSCode..."
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &> ${ERROR_LOG}
+          sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/  &> ${ERROR_LOG}
+          if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
+	    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' &> ${ERROR_LOG}
+	  fi
+          sudo apt-get update &> ${ERROR_LOG}
+          sudo apt-get install -y code &> ${ERROR_LOG}
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
+  echo -e "\n\t✅  Done\n"
+}
+
 function setupCorpSpecific() {
   if [[ "${IS_CORP_INSTALL}" = false ]]; then
     return
