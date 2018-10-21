@@ -134,10 +134,10 @@ function installChrome() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
-          if [ ! -f /etc/apt/sources.list.d/google.list ]; then
+          if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - &> ${ERROR_LOG}
 
-	    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' &> ${ERROR_LOG}
+	    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' &> ${ERROR_LOG}
 	  fi
           sudo apt-get update &> ${ERROR_LOG}
           sudo apt-get install -y google-chrome-stable &> ${ERROR_LOG}
@@ -161,11 +161,10 @@ function installVSCode() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
+          curl --silent https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &> ${ERROR_LOG}
+          sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/  &> ${ERROR_LOG}
+          rm microsoft.gpg &> ${ERROR_LOG}
           if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
-            curl --silent https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &> ${ERROR_LOG}
-            sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/  &> ${ERROR_LOG}
-            rm microsoft.gpg &> ${ERROR_LOG}
-
 	    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' &> ${ERROR_LOG}
 	  fi
           sudo apt-get update &> ${ERROR_LOG}
