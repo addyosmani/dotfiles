@@ -38,6 +38,9 @@ function install() {
 
 	echo -e "🧪  Updating initramfs..."
 	update-initramfs -u &> ${ERROR_LOG}
+
+	echo -e "🧪  Updating grub..."
+	update-grub &> ${ERROR_LOG}
 }
 
 initTempDir
