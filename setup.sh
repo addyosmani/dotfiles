@@ -31,7 +31,7 @@ function installCommonDeps() {
   unameOut="$(uname -s)"
   case "${unameOut}" in
       Linux*)
-          sudo apt-get install -y curl gparted zsh synaptic &> ${ERROR_LOG}
+          sudo apt-get install -y curl gparted zsh synaptic gimp inkscape &> ${ERROR_LOG}
           ;;
       Darwin*)
           # NOOP
@@ -114,6 +114,27 @@ function installStockGnome() {
           sudo apt-get install -y gnome-session vanilla-gnome-default-settings &> ${ERROR_LOG}
           # Change the login to gnome-shell
           sudo update-alternatives --config gdm3.css
+          ;;
+      Darwin*)
+          # NOOP
+          ;;
+      *)
+          # NOOP
+          ;;
+  esac
+  echo -e "\n\t✅  Done\n"
+}
+
+function installGauntfacePlymouth() {
+  if [[ "${IS_CORP_INSTALL}" = true ]]; then
+    return
+  fi
+  
+  echo -e "📦  Installing Gauntface Plymouth Theme..."
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+      Linux*)
+          source "${DOTFILES_DIR}/plymouth-theme/install.sh"
           ;;
       Darwin*)
           # NOOP

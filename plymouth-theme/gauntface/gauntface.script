@@ -1,0 +1,27 @@
+fun GetLogoImageName(progress, size) {
+  percent = progress * 100;
+  remainder = percent % 10;
+  imgIndex = percent - remainder;
+
+  logoImg = Image("gauntface-logo-" + imgIndex + ".png");
+  scaledLogoImg = logoImg.Scale(size, size);
+  return scaledLogoImg;
+}
+
+#----------------------------------------- Logo ---------------------------------
+smallestDimen = Math.Min(Window.GetWidth(), Window.GetHeight());
+logo.size = smallestDimen * 0.3;
+
+logo.img = GetLogoImageName(0.1, logo.size);
+logo.sprite = Sprite(logo.img);
+logo.sprite.SetX((Window.GetWidth()  / 2) - (logo.size  / 2));
+logo.sprite.SetY((Window.GetHeight() / 2) - (logo.size / 2));
+
+#---------------------------------------- Progress ---------------------------------
+
+fun progress_callback (duration, progress){
+  logo.img = GetLogoImageName(progress, logo.size);
+  logo.sprite.SetImage(logo.img);
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);
