@@ -1,9 +1,0 @@
-
-# programs
-alias at='open -a "atom"'
-alias st='open -a "Sublime Text"'
-alias chrome='open -a google\ chrome'
-alias music='open -a google\ chrome "http://music.google.com/"'
-alias facebook='open -a google\ chrome "http://facebook.com/"'
-alias twitter='open -a google\ chrome "http://twitter.com/"'
-alias gauntface='open -a google\ chrome "https://gauntface.com/blog"'
