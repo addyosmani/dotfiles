@@ -26,9 +26,9 @@ function install() {
 	THEME_DIR="${SCRIPT_DIR}/${THEME}/"
 
 	echo -e "✂️  Copying over theme files..."
-	# printf "Copying '${THEME}' theme files..."
+	rm -rf ${INSTALLDIR}/${THEME}
 	mkdir -p ${INSTALLDIR}/${THEME}
-	cp -rf ${THEME_DIR} ${INSTALLDIR}/${THEME}
+	cp -rf ${THEME_DIR}/* ${INSTALLDIR}/${THEME}
 
 	echo -e "📦️  Installing theme..."
 	update-alternatives --quiet --install ${INSTALLDIR}/default.plymouth default.plymouth ${INSTALLDIR}/${THEME}/${THEME}.plymouth 100
@@ -38,9 +38,6 @@ function install() {
 
 	echo -e "🧪  Updating initramfs..."
 	update-initramfs -u &> ${ERROR_LOG}
-
-	echo -e "🧪  Updating grub..."
-	update-grub &> ${ERROR_LOG}
 }
 
 initTempDir
