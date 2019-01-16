@@ -25,6 +25,9 @@ function install() {
 	SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 	THEME_DIR="${SCRIPT_DIR}/${THEME}/"
 
+	echo -e "📦️  Installing Plymouth X11 tool..."
+	sudo apt-get install plymouth-x11 -y	
+
 	echo -e "✂️  Copying over theme files..."
 	rm -rf ${INSTALLDIR}/${THEME}
 	mkdir -p ${INSTALLDIR}/${THEME}

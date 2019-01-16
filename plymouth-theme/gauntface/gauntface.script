@@ -1,5 +1,22 @@
+#-------------------------------------- Z Index ---------------------------------
+
+BG_IMAGE=1;
+DEBUG_MSG=2;
+
+#---------------------------------------- Debug ---------------------------------
+
+debug.sprite = Sprite();
+debug.sprite.SetX(0);
+debug.sprite.SetY(0);
+debug.sprite.SetZ(DEBUG_MSG);
+
+fun showDebugMsg(msg) {
+    debug.sprite.SetImage(Image.Text("DEBUG: " + msg, 1, 1, 1));
+}
+
 #----------------------------------------- Logo ---------------------------------
-for (i = 0; i <= 10; i++) {
+LOGO_COUNT=10;
+for (i = 0; i <= LOGO_COUNT; i++) {
   logo.images[i] = Image("gauntface-logo-" + i + ".png");
 }
 
@@ -9,15 +26,36 @@ logo.size = Math.Int(smallestDimen * 0.3);
 logo.sprite = Sprite();
 logo.sprite.SetX(Math.Int((Window.GetWidth()  / 2) - (logo.size  / 2)));
 logo.sprite.SetY(Math.Int((Window.GetHeight() / 2) - (logo.size / 2)));
+logo.sprite.SetZ(BG_IMAGE);
 
-scaledLogo = logo.images[0].Scale(logo.size, logo.size);
-logo.sprite.setImage(scaledLogo);
+fun showBGImage(index) {
+    cappedIndex = index % (LOGO_COUNT + 1);
+    logo.sprite.SetImage(logo.images[cappedIndex].Scale(logo.size, logo.size));
+}
 
 #---------------------------------------- Progress ---------------------------------
 
-#fun progress_callback(duration, progress) {
-#  logo.img = GetLogoImageName(progress, logo.size);
-#  logo.sprite.SetImage(logo.img);
-#}
-#
-#Plymouth.SetBootProgressFunction(progress_callback);
+fun progress_callback(duration, progress) {
+
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);
+
+#---------------------------------------- Refresh ---------------------------------
+
+refreshCount = 0;
+
+fun refresh_callback() {
+    refreshCount++;
+    showBGImage(Math.Int(refreshCount / 4));
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+#---------------------------------------- Message ---------------------------------
+
+Plymouth.SetMessageFunction(showDebugMsg);
+
+#---------------------------------------- Start -----------------------------------
+
+showBGImage(0);
